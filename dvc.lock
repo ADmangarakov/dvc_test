@@ -1,0 +1,46 @@
+schema: '2.0'
+stages:
+  predict:
+    cmd: python scripts/predict.py
+    deps:
+    - path: data/Iris.csv
+      md5: 717820ef0af287ff346c5cabfb4c612c
+      size: 5107
+    - path: scripts/predict.py
+      md5: 47a3453eb1062891cb4421180bcdbb0e
+      size: 1518
+    outs:
+    - path: X_test.csv
+      md5: 23b2d5f6d3f8966c1866fd9421baada1
+      size: 3900
+    - path: X_train.csv
+      md5: 23b2d5f6d3f8966c1866fd9421baada1
+      size: 3900
+    - path: y_test.csv
+      md5: 23b2d5f6d3f8966c1866fd9421baada1
+      size: 3900
+    - path: y_train.csv
+      md5: 23b2d5f6d3f8966c1866fd9421baada1
+      size: 3900
+  accuracy:
+    cmd: python scripts/accuracy.py
+    deps:
+    - path: X_test.csv
+      md5: 23b2d5f6d3f8966c1866fd9421baada1
+      size: 3900
+    - path: X_train.csv
+      md5: 23b2d5f6d3f8966c1866fd9421baada1
+      size: 3900
+    - path: scripts/accuracy.py
+      md5: e9e815e096465c3d0a70286b02043c29
+      size: 787
+    - path: y_test.csv
+      md5: 23b2d5f6d3f8966c1866fd9421baada1
+      size: 3900
+    - path: y_train.csv
+      md5: 23b2d5f6d3f8966c1866fd9421baada1
+      size: 3900
+    outs:
+    - path: Accuracy.txt
+      md5: a2ec7a8c4a65809b69c52c3da5a1174d
+      size: 26
